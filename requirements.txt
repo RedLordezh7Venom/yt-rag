@@ -1,0 +1,12 @@
+numpy
+pandas
+youtube-transcript-api
+langchain
+langchain-openai
+langchain-community
+langchain-core
+langchain-groq
+faiss-cpu
+sentence-transformers
+fastapi
+uvicorn
