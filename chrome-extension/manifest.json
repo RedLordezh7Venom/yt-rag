@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube RAG Chatbot",
+  "version": "1.0",
+  "description": "Chatbot for answering questions about YouTube videos using RAG backend.",
+  "permissions": [
+    "scripting",
+    "tabs",
+    "storage",
+    "sidePanel"
+  ],
+  "host_permissions": [
+    "https://www.youtube.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/watch*"],
+      "js": ["content.js"]
+    }
+  ],
+  "side_panel": {
+    "default_path": "index.html"
+  },
+  "action": {
+    "default_title": "Open RAG Chatbot"
+  }
+}
