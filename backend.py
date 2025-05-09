@@ -9,7 +9,7 @@ from langchain_core.runnables import RunnableParallel, RunnablePassthrough, Runn
 from langchain_core.output_parsers import StrOutputParser
 from langchain_groq import ChatGroq
 from dotenv import load_dotenv
-from langchain_huggingface import SentenceTransformerEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 from typing import Dict
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -61,7 +61,7 @@ def process_video(req: VideoRequest):
 
     splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
     chunks = splitter.create_documents([transcript])
-    embeddings = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
+    embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
     vector_store = FAISS.from_documents(chunks, embeddings)
     retriever = vector_store.as_retriever()
 

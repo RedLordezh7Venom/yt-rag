@@ -33,8 +33,8 @@ splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
 chunks = splitter.create_documents([transcript])
 
 #embeddings, retriever
-from langchain_community.embeddings import SentenceTransformerEmbeddings
-embeddings = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
+from langchain_huggingface import HuggingFaceEmbeddings
+embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 vector_store = FAISS.from_documents(chunks, embeddings)
 retriever = vector_store.as_retriever()
 
